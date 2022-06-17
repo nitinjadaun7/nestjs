@@ -1,0 +1,25 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: ngnix-deployment
+#   labels:
+#     app: ngnix-app
+# spec:
+#   selector:
+#     matchLabels:
+#       app: ngnix-app
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: ngnix-app
+#     spec:
+#       containers:
+#       - name: ngnix-app
+#         image: nginx:1.16.1
+#         resources:
+#           limits:
+#             memory: "128Mi"
+#             cpu: "500m"
+#         ports:
+#         - containerPort: 80

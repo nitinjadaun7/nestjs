@@ -1,0 +1,31 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Customer {
+  username: String!
+  name: String!
+  address: String!
+  birthdate: DateTime!
+  email: String!
+  active: Boolean
+  accounts: [Float!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Account {
+  _id: String!
+  account_id: Float!
+  limit: Float!
+  products: [String!]!
+}
+
+type Query {
+  sayHello: String!
+  getCustomer: [Customer!]!
+  getAccounts: [Account!]!
+}

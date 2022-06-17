@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  main:
+    container_name: nestjs
+    build: 
+      context: .
+      target: development
+    volumes: 
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    command: npm run start:dev
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - nest-webapp-network
+
+  mongo:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - nest-webapp-network
+  redis:
+    image: redis:latest
+    container_name: rediscache
+    ports:
+      - 49153:49153
+    networks:
+      - nest-webapp-network
+networks:
+  nest-webapp-network:
+    driver: bridge
+  
